@@ -6,3 +6,9 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Layout/TrailingBlankLines:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false

@@ -1,11 +1,12 @@
 require 'uri'
+require 'json'
 require 'fileutils'
 require 'thor'
 require 'highline'
 require 'pswd/cli'
 require 'pswd/version'
-require 'pswd/json_io'
 require 'pswd/domain'
+require 'pswd/json_io'
 
 module Pswd
 end

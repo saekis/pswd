@@ -1,5 +1,3 @@
-require 'json'
-
 module Pswd
   class JsonIo
     attr_reader :path
@@ -10,10 +8,14 @@ module Pswd
     end
 
     def hash
-      hash = open(@path) do |file|
-        JSON.load(file)
+      open(@path) do |file|
+        json = file.read
+        if json.nil? || json == ''
+          {}
+        else
+          JSON.parse(json)
+        end
       end
-      hash.is_a?(Hash) ? hash : {}
     end
 
     def dump(hash)

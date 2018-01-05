@@ -5,7 +5,7 @@ module Pswd
     desc 'main', 'search password by domain'
     def main
       print 'domain: '
-      print Domain.extract(gets.chomp)
+      print Domain.extract(STDIN.gets.chomp)
     end
 
     desc 'register', 'register password'
@@ -14,10 +14,10 @@ module Pswd
       json_io = JsonIo.new(path)
 
       print 'domain: '
-      Domain.extract(gets.chomp)
+      domain = Domain.extract(STDIN.gets.chomp)
 
       print 'user name or email: '
-      login_id = gets.chomp
+      login_id = STDIN.gets.chomp
 
       password = HighLine.new.ask('password: ') { |q| q.echo = '*' }
 
