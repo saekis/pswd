@@ -12,3 +12,6 @@ Layout/TrailingBlankLines:
 
 Lint/AssignmentInCondition:
   Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
