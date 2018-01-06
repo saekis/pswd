@@ -4,7 +4,7 @@ module Pswd
 
     def initialize(path)
       @path = path
-      create_json_file(path) unless File.exist?(path)
+      create unless File.exist?(path)
     end
 
     def hash
@@ -24,10 +24,10 @@ module Pswd
       end
     end
 
-    def create_json_file(path)
-      dirname = File.dirname(path)
+    def create
+      dirname = File.dirname(@path)
       FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-      open(path, 'w') { |json| json.puts(JSON.generate({})) }
+      open(@path, 'w') { |json| json.puts(JSON.generate({})) }
     end
   end
 end
