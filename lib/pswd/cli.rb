@@ -13,12 +13,8 @@ module Pswd
       path = "#{Dir.home}/tools/.pswd/password.json"
       json_io = JsonIo.new(path)
 
-      print 'domain: '
-      domain = Domain.extract(STDIN.gets.chomp)
-
-      print 'user name or email: '
-      login_id = STDIN.gets.chomp
-
+      domain = HighLine.new.ask('domain: ')
+      login_id = HighLine.new.ask('user name or email: ')
       password = HighLine.new.ask('password: ') { |q| q.echo = '*' }
 
       hash = json_io.hash()
