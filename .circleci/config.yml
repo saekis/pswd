@@ -8,9 +8,7 @@ jobs:
       - checkout
 
       - restore_cache:
-        keys:
-          - gems-{{ checksum "Gemfile.lock" }}
-          - gems-
+        key: gems-{{ checksum "Gemfile.lock" }}
 
       - run:
         name: install dependencies
