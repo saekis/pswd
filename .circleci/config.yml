@@ -8,23 +8,23 @@ jobs:
       - checkout
 
       - restore_cache:
-        key: gems-{{ checksum "Gemfile.lock" }}
+          key: gems-{{ checksum "Gemfile.lock" }}
 
       - run:
-        name: install dependencies
-        command: |
+          name: install dependencies
+          command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
-        key: gems-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+          key: gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
       - run:
-        name: Rubocop style check
-        command: bundle exec rubocop
+          name: Rubocop style check
+          command: bundle exec rubocop
 
       - run:
-        name: run tests
-        command: |
-          bundle exec rspec --profile 10 \
+          name: run tests
+          command: |
+            bundle exec rspec --profile 10 \
                             --format progress
