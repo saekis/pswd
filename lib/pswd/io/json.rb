@@ -1,6 +1,6 @@
 module Pswd
-  module Json
-    class Io
+  module Io
+    class Json
       attr_reader :path
 
       def initialize(path)
@@ -17,6 +17,11 @@ module Pswd
             JSON.parse(json)
           end
         end
+      end
+
+      def search(key)
+        json_hash = hash
+        json_hash.key?(key) ? json_hash[key] : nil
       end
 
       def generate_hash(domain, id, password)
