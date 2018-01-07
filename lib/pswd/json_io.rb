@@ -7,7 +7,7 @@ module Pswd
       create unless File.exist?(path)
     end
 
-    def hash
+    def json_hash
       open(@path) do |file|
         json = file.read
         if json.nil? || json == ''
@@ -16,6 +16,13 @@ module Pswd
           JSON.parse(json)
         end
       end
+    end
+
+    def generate_hash(domain, id, password)
+      hash = json_hash
+      hash.store(domain, {}) unless hash.key?(domain)
+      hash[domain][id] = password
+      hash
     end
 
     def dump(hash)

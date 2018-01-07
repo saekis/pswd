@@ -16,10 +16,7 @@ module Pswd
       domain = HighLine.new.ask('domain: ')
       login_id = HighLine.new.ask('user name or email: ')
       password = HighLine.new.ask('password: ') { |q| q.echo = '*' }
-
-      hash = json_io.hash()
-      hash.store(domain, {}) unless hash.key?(domain)
-      hash[domain][login_id] = password
+      hash = json_io.generate_hash(domain, login_id, password)
       json_io.dump(hash)
     end
 
