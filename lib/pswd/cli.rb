@@ -11,7 +11,7 @@ module Pswd
     desc 'register', 'register password'
     def register
       path = "#{Dir.home}/tools/.pswd/password.json"
-      json_io = JsonIo.new(path)
+      json_io = Json::Io.new(path)
 
       domain = HighLine.new.ask('domain: ')
       login_id = HighLine.new.ask('user name or email: ')
