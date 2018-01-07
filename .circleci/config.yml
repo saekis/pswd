@@ -21,7 +21,7 @@ jobs:
         paths:
           - vendor/bundle
 
-      -run :
+      - run:
         name: Rubocop style check
         command: bundle exec rubocop
 
