@@ -1,25 +1,32 @@
 version: 2
 jobs:
   build:
-    parallelism: 3
     working_directory: ~/pswd
     docker:
       - image: circleci/ruby:2.4.2-node
     steps:
       - checkout
+
       - restore_cache:
         keys:
           - gems-{{ checksum "Gemfile.lock" }}
           - gems-
-      - run: bundle install --path vendor/bundle
+
+      - run:
+        name: install dependencies
+        command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
         key: gems-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
 
+      -run :
+        name: Rubocop style check
+        command: bundle exec rubocop
+
       - run:
         name: run tests
         command: |
           bundle exec rspec --profile 10 \
-                            --format progress \
-                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+                            --format progress
