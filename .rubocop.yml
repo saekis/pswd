@@ -15,3 +15,8 @@ Lint/AssignmentInCondition:
 
 Metrics/LineLength:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - '*.gemspec'
+    - 'spec/**/*_spec.rb'

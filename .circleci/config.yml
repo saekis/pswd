@@ -5,17 +5,20 @@ jobs:
     working_directory: ~/pswd
     docker:
       - image: circleci/ruby:2.4.2-node
-    step:
+    steps:
       - checkout
       - restore_cache:
-        key: pswd-{{ checksum "Gemfile.lock" }}
+        keys:
+          - gems-{{ checksum "Gemfile.lock" }}
+          - gems-
       - run: bundle install --path vendor/bundle
       - save_cache:
-        key: pswd-{{ checksum "Gemfile.lock" }}
+        key: gems-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
 
-      type: shell
+      - run:
+        name: run tests
         command: |
           bundle exec rspec --profile 10 \
                             --format progress \
