@@ -4,13 +4,14 @@ module Pswd
 
     desc 'search', 'search password by domain'
     def search(domain = nil)
-      abort('Please input domain') if domain.nil?
-
-      search = Commands::Search.new(domain).run
-      abort('password not found') if search.login_id.nil? || search.password.nil?
-
-      puts("login_id: #{search.login_id}")
-      puts("password: #{search.password}")
+      if domain.nil?
+        abort('Please input domain')
+      else
+        search = Commands::Search.new(domain).run
+        abort('password not found') if search.login_id.nil? || search.password.nil?
+        puts("login_id: #{search.login_id}")
+        puts("password: #{search.password}")
+      end
     end
 
     desc 'register', 'register password'

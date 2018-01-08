@@ -12,7 +12,7 @@ module Pswd
       def run
         keys = @accounts.keys
         case keys.length
-        when 0 then self
+        when 0 then nil
         when 1
           define_account(keys[0])
         else
