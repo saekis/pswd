@@ -2,7 +2,7 @@ module Pswd
   module Commands
     class Register < Base
       def initialize
-        super
+        super()
       end
 
       def run
