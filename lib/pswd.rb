@@ -3,10 +3,14 @@ require 'json'
 require 'fileutils'
 require 'thor'
 require 'highline'
+require 'mem'
 require 'pswd/cli'
 require 'pswd/version'
 require 'pswd/domain'
 require 'pswd/json'
+require 'pswd/commands/base'
+require 'pswd/commands/search'
+require 'pswd/commands/register'
 
 module Pswd
   class << self

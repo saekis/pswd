@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'pswd'
-Pswd::CLI.start
+Pswd::CLI.start(ARGV)
