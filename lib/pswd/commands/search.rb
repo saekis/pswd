@@ -2,7 +2,7 @@ module Pswd
   module Commands
     class Search < Base
       def initialize(domain)
-        super()
+        super
         @domain = domain
         @accounts = @json_io.search(domain)
         @login_id = nil

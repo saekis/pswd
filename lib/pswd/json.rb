@@ -23,13 +23,6 @@ module Pswd
       json_hash.key?(key) ? json_hash[key] : {}
     end
 
-    def generate_hash(domain, id, password)
-      json_hash = hash
-      json_hash.store(domain, {}) unless json_hash.key?(domain)
-      json_hash[domain][id] = password
-      json_hash
-    end
-
     def dump(hash)
       open(@path, 'w') do |io|
         JSON.dump(hash, io)
