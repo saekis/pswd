@@ -22,10 +22,7 @@ module Pswd
       end
 
       def select_account
-        puts('which account?')
-        @accounts.keys.each_with_index { |id, index| puts("#{index}. #{id}") }
-        index = Requires::Search.index.to_i
-        login_id = @accounts.keys[index]
+        login_id = Requires::Search.login_id(@accounts)
         abort('invalid number') unless login_id
       end
 
