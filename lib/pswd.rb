@@ -11,6 +11,7 @@ require 'pswd/hash_builder'
 require 'pswd/commands/base'
 require 'pswd/commands/search'
 require 'pswd/commands/register'
+require 'pswd/commands/list'
 
 module Pswd
   class << self

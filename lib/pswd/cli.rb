@@ -19,6 +19,16 @@ module Pswd
       Commands::Register.new.run
     end
 
+    desc 'list', 'display domaim list'
+    def list
+      domains = Commands::List.new.run
+      if domains.length.zero?
+        abort('Nothing is registered yet.')
+      else
+        domains.each { |domain| puts(domain) }
+      end
+    end
+
     desc 'version', 'version'
     def version
       puts Pswd::VERSION
