@@ -8,15 +8,16 @@ module Pswd
         abort('Please pass domain')
       else
         search = Commands::Search.new(domain).run
-        abort('password not found') if search.login_id.nil? || search.password.nil?
+        abort('Account not found') if search.login_id.nil? || search.password.nil?
         puts("login_id: #{search.login_id}")
         puts("password: #{search.password}")
       end
     end
 
-    desc 'register', 'register password'
+    desc 'register', 'Register password'
     def register
       Commands::Register.new.run
+      puts('Registered password!')
     end
 
     desc 'list', 'display domaim list'

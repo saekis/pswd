@@ -12,6 +12,8 @@ require 'pswd/commands/base'
 require 'pswd/commands/search'
 require 'pswd/commands/register'
 require 'pswd/commands/list'
+require 'pswd/requires/register'
+require 'pswd/requires/search'
 
 module Pswd
   class << self

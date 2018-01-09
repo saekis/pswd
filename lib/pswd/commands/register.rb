@@ -6,9 +6,9 @@ module Pswd
       end
 
       def run
-        domain = Domain.extract(HighLine.new.ask('domain: '))
-        login_id = HighLine.new.ask('user name or email: ')
-        password = HighLine.new.ask('password: ') { |q| q.echo = '*' }
+        domain = Domain.extract(Requires::Register.domain)
+        login_id = Requires::Register.login_id
+        password = Requires::Register.password
         hash = HashBuilder.build(@json_io.hash, domain, login_id, password)
         @json_io.dump(hash)
       end
