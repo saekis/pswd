@@ -11,7 +11,6 @@ describe Pswd::Domain do
 
     context 'Url without protocol' do
       it 'returns only domain' do
-        p Pswd::Domain.extract('www.amazon.com/ap/signin')
         expect(Pswd::Domain.extract('www.amazon.com/ap/signin'))
           .to eq 'www.amazon.com'
       end

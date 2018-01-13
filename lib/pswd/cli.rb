@@ -3,21 +3,18 @@ module Pswd
     default_command :search
 
     desc 'search', 'search password by domain'
-    def search(domain = nil)
-      if domain.nil?
-        abort('Please pass domain')
-      else
-        search = Commands::Search.new(domain).run
-        abort('Account not found') if search.login_id.nil? || search.password.nil?
-        puts("login_id: #{search.login_id}")
-        puts("password: #{search.password}")
-      end
+    def search(url)
+      search = Commands::Search.new(url).run
+      puts("domain: #{search.domain}")
+      abort('Account not found') if search.login_id.nil? || search.password.nil?
+      puts("login_id: #{search.login_id}")
+      puts("password: #{search.password}")
     end
 
     desc 'register', 'Register password'
     def register
       Commands::Register.new.run
-      puts('Registered password!')
+      puts('Password registered!')
     end
 
     desc 'list', 'display domaim list'

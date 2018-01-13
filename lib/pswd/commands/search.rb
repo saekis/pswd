@@ -1,15 +1,16 @@
 module Pswd
   module Commands
     class Search < Base
-      def initialize(domain)
+      def initialize(url)
         super()
-        @domain = domain
-        @accounts = @json_io.search(domain)
+        @domain = Domain.extract(url)
+        @accounts = @json_io.search(@domain)
         @login_id = nil
         @password = nil
       end
 
       def run
+        puts("domain: #{@domain}")
         keys = @accounts.keys
         case keys.length
         when 0 then nil
